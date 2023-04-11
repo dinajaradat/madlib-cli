@@ -1,4 +1,7 @@
 
+print("Welcome to the Madlib ")
+print("To get started, simply fill in the blanks with different types of words.")
+print("Once you've filled in all the blanks, the program will generate a funny story using your words!")
 
 def read_template(path):
     try:
