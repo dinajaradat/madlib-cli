@@ -10,7 +10,7 @@ def read_template(path):
          return file1.read()
 
     except FileNotFoundError:
-       print("FileNotFoundError")
+       raise FileNotFoundError(f"No such file or directory: '{path}'")
 
 #read_template("assets/dark_and_stormy_night_template.txt")
 #read_template("assets/Madlib_template.txt")
@@ -36,13 +36,7 @@ def parse_template(content):
     #print(text, tuple(array))
     return text, tuple(array) # creates a new tuple object from the array
     
-#output = parse_template("It was a {Adjective} and {Adjective} {Noun}.")
-output = parse_template(read_template("assets/Madlib_template.txt"))
-values = []
-for i in output[1]:
-    value = str(input ("Enter a " + i +" "))
-    values.append(value)
-#print (values)
+
 
 def merge(template, values):
     Sections = template.split('{}')
@@ -57,5 +51,19 @@ def merge(template, values):
     with open("assets/dark_copy.txt","w") as file:
         file.write(output)
     return output
-#merge("It was a {} and {} {}.", values)
-merge(output[0],values)
+
+
+
+
+if __name__ =='__main__':
+  #output = parse_template("It was a {Adjective} and {Adjective} {Noun}.")
+  output = parse_template(read_template("assets/Madlib_template.txt"))
+  values = []
+  for i in output[1]:
+    value = str(input ("Enter a " + i +" "))
+    values.append(value)
+  #print (values)
+
+
+  #merge("It was a {} and {} {}.", values)
+  merge(output[0],values)
